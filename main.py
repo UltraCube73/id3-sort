@@ -30,7 +30,10 @@ def main(args=[]):
             os.makedirs(dest)
         except FileExistsError:
             pass
-        shutil.move(file, dest)
+        try:
+            shutil.move(file, dest)
+        except shutil.Error:
+            pass
 
 if __name__ == "__main__":
     main(sys.argv)
